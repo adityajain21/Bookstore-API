@@ -4,6 +4,8 @@ from flask.ext.mysql import MySQL
 
 app = Flask(__name__)
 
+
+
 @app.route("/add")
 def add():
 
