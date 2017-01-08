@@ -5,6 +5,18 @@ from flask.ext.mysql import MySQL
 app = Flask(__name__)
 
 
+@app.route("/")
+def login():
+	return render_template('index.html')
+
+@app.route("/login",methods=['POST'])
+def token():
+	email = request.form['inputEmail']
+	password = request.form['inputPassword']
+
+
+	return "Login Succesful"
+
 
 @app.route("/add")
 def add():
