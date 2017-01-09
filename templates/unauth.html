@@ -1,0 +1,35 @@
+<html>
+
+	<head>
+		<title>UnAuthorised Access</title>
+		<meta name="Login Page" content="width=device-width, initial-scale=1.0">
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+		<link href="../static/css/signup.css" rel="stylesheet">
+	</head>
+
+
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+				<h2>Sorry you are not authorised to access the desired data. </h2>
+				
+				
+
+				{% if error %}
+					<p class="error"><strong>Error:</strong> {{ error }}
+				{% endif %}
+
+			</div>
+
+			<footer class="footer">
+				<p>&copy; Aditya Jain</p>
+			</footer>
+			
+		</div>
+
+		<script src="../static/js/jquery-1.11.2.js"></script>
+		<script src="../static/js/signin.js"></script>
+
+	</body>
+</html>
