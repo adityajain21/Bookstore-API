@@ -1,6 +1,8 @@
 import requests
 from flask import Flask, render_template, request, json, redirect, url_for, redirect
 from flask.ext.mysql import MySQL
+import hashlib
+
 
 app = Flask(__name__)
 
@@ -11,11 +13,34 @@ def login():
 
 @app.route("/login",methods=['POST'])
 def token():
-	email = request.form['inputEmail']
-	password = request.form['inputPassword']
 
+	try:
+		_email = request.form['inputEmail']
+		_pass = request.form['inputPassword']
+		print _email
+		print _pass
 
-	return "Login Succesful"
+		m = hashlib.md5()
+		m.update(_email + _pass)
+		_hash = m.hexdigest()
+		print _hash
+		conn = mysql.connect()
+		cursor = conn.cursor()
+		if _email and _pass and _hash:
+			query = """INSERT INTO Token (Email, Pass, Hash) VALUES (%s, %s, %s)"""
+			cursor.execute(query,(_email,_pass,_hash))
+			conn.commit()
+			data = cursor.fetchall()
+			if data is None:
+				return "NOT Added"
+			else:
+				return _hash
+				
+	except Exception as e:
+		return json.dumps({'error':str(e)})
+	finally:
+		cursor.close()
+		conn.close()
 
 
 @app.route("/add")
