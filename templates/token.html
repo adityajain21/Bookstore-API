@@ -1,0 +1,58 @@
+<html>
+
+	<head>
+		<title>Show Token page</title>
+		<meta name="Login Page" content="width=device-width, initial-scale=1.0">
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+		<link href="../static/css/signup.css" rel="stylesheet">
+	</head>
+
+
+	<body>
+		<div class="container">
+			<div class="jumbotron">
+				<h2>Your Token is {{has}} </h2>
+				
+				
+
+				{% if error %}
+					<p class="error"><strong>Error:</strong> {{ error }}
+				{% endif %}
+
+			</div>
+			
+			<div class="row marketing">
+				<div>
+					<h4>ADD API End Point</h4>
+					<p>If you have the knowledge of Name and Price of Book you want to add, the end point is <b><u>localhost:5000/add?name=XXX&price=XXX&flag=1 </b></u></p>
+	
+					<br><br><br><h4>DELETE API End Point</h4>
+					<p>If you have the knowledge of Name of Book you want to delete, the end point is <b><u>localhost:5000/delete?name=XXX </b></u></p>
+					<p>If you have the knowledge of Lower and Upper range of price of Book you want to delete, the end point is <b><u>localhost:5000/delete?lt=XXX&gt=XXX </b></u></p>
+					
+					<br><br><br><h4>SEARCH API End Point</h4>
+					<p>If you have the knowledge of Name of Book you want to search, the end point is <b><u>localhost:5000/find?name=XXX </b></u></p>
+					<p>If you have the knowledge of Lower and Upper range of prices of Book you want to search, the end point is <b><u>localhost:5000/find?lt=XXX&gt=XXX </b></u></p>
+
+					<br><br><br><h4>EDIT API End Point</h4>
+					<p>If you have the knowledge of BOOKID of Book whose details you want to edit, the end point for editing the name is <b><u>localhost:5000/edit?name=XXX&bid=XXX </b></u></p>
+					<p>If you have the knowledge of BOOKID of Book whose details you want to edit, the end point for editing the price is <b><u>localhost:5000/edit?price=XXX&bid=XXX </b></u></p>
+					<p>If you have the knowledge of BOOKID of Book whose details you want to edit, the end point for editing the availability is <b><u>localhost:5000/edit?flag=XXX&bid=XXX </b></u></p>
+
+
+				</div>
+			</div>
+			
+
+			<footer class="footer">
+				<p>&copy; Aditya Jain</p>
+			</footer>
+			
+		</div>
+
+		<script src="../static/js/jquery-1.11.2.js"></script>
+		<script src="../static/js/signin.js"></script>
+
+	</body>
+</html>

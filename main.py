@@ -17,13 +17,9 @@ def token():
 	try:
 		_email = request.form['inputEmail']
 		_pass = request.form['inputPassword']
-		print _email
-		print _pass
-
 		m = hashlib.md5()
 		m.update(_email + _pass)
 		_hash = m.hexdigest()
-		print _hash
 		conn = mysql.connect()
 		cursor = conn.cursor()
 		if _email and _pass and _hash:
@@ -34,8 +30,8 @@ def token():
 			if data is None:
 				return "NOT Added"
 			else:
-				return _hash
-				
+				return render_template('token.html',has=_hash)
+
 	except Exception as e:
 		return json.dumps({'error':str(e)})
 	finally:
